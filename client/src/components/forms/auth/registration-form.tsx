@@ -25,9 +25,11 @@ export const RegistrationForm = () => {
           Sign up
         </label>
         <input className="auth-input" type="text" placeholder="Username" {...registerInput("email")} />
-        {errors.email && touchedFields.email && <p>{errors.email.message}</p>}
+        {errors.email && touchedFields.email && <p className="text-center text-red-400">{errors.email.message}</p>}
         <input className="auth-input" type="password" placeholder="Password" {...registerInput("password")} />
-        {errors.password && touchedFields.password && <p>{errors.password.message}</p>}
+        {errors.password && touchedFields.password && (
+          <p className="text-center text-red-400">{errors.password.message}</p>
+        )}
         <input
           className="auth-input"
           type="password"

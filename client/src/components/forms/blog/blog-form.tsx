@@ -50,14 +50,14 @@ export const BlogForm = ({ refetch, close, id }: { refetch: () => void; close: (
           placeholder="Title"
           {...registerInput("title")}
         />
-        {errors.title && touchedFields.title && <p>{errors.title.message}</p>}
+        {errors.title && touchedFields.title && <p className="text-red-400">{errors.title.message}</p>}
         <textarea
           rows={8}
           className="border-2 border-gray-300 rounded-md h-full px-4 py-2"
           placeholder="Content"
           {...registerInput("content")}
         />
-        {errors.content && touchedFields.content && <p>{errors.content.message}</p>}
+        {errors.content && touchedFields.content && <p className="text-red-400">{errors.content.message}</p>}
         <button className="bg-violet-500 text-white px-4 py-2 rounded">Submit</button>
       </form>
     </div>

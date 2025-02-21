@@ -28,16 +28,16 @@
 }
 .auth-input {
   width: 60%;
-  height: 10px;
+  height: 12px;
   background: #e0dede;
   justify-content: center;
   display: flex;
-  margin: 20px auto;
-  padding: 12px;
+  margin: 10px auto;
+  padding: 16px;
   border: none;
   outline: none;
   border-radius: 5px;
-  font-size: small;
+  font-size: medium;
 }
 .auth-button {
   width: 60%;
