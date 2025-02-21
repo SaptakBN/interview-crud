@@ -6,11 +6,13 @@ export function Blog({
   blog,
   handleApprove,
   handleEdit,
+  handleDelete,
   isSameUser,
 }: {
   blog: IBlog;
   handleApprove?: (id: string) => void;
   handleEdit?: () => void;
+  handleDelete?: (id: string) => void;
   isSameUser: boolean;
 }) {
   return (
@@ -30,7 +32,7 @@ export function Blog({
             Approve
           </button>
         ) : (
-          isSameUser && <EditMenu handleEdit={handleEdit} />
+          isSameUser && <EditMenu handleEdit={handleEdit} handleDelete={handleDelete?.bind(null, blog._id)} />
         )}
       </div>
       <h2 className="text-xl font-bold mb-4">{blog.title}</h2>

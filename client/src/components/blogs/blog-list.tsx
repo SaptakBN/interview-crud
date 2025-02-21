@@ -1,6 +1,7 @@
 import { HomeInputs, Loader, Blog, BlogForm, Modal } from "@/components";
 import useApprovedBlogs from "@/hooks/useApprovedBlogs";
 import { Blog as IBlog } from "@/interfaces/blog.interface";
+import { deleteBlog } from "@/services/blog.service";
 import { useState } from "react";
 
 export function BlogList({ userId }: { userId: string }) {
@@ -8,6 +9,12 @@ export function BlogList({ userId }: { userId: string }) {
 
   const [idToUpdate, setIdToUpdate] = useState<string | null>(null);
   const isOpen = Boolean(idToUpdate);
+
+  const handleDelete = async (id: string) => {
+    const [response, error] = await deleteBlog(id);
+    if (error) console.log(error);
+    if (response) await fetchApprovedBlogs();
+  };
 
   if (loading) return <Loader />;
 
@@ -23,6 +30,7 @@ export function BlogList({ userId }: { userId: string }) {
               key={i}
               handleEdit={() => setIdToUpdate(blog._id)}
               isSameUser={userId === blog.author._id}
+              handleDelete={handleDelete}
             />
           ))}
         </div>

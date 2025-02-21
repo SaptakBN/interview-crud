@@ -2,7 +2,7 @@ import { Ellipsis } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-export const EditMenu = ({ handleEdit }: { handleEdit?: () => void }) => {
+export const EditMenu = ({ handleEdit, handleDelete }: { handleEdit?: () => void; handleDelete?: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="flex relative">
@@ -42,7 +42,7 @@ export const EditMenu = ({ handleEdit }: { handleEdit?: () => void }) => {
             </button>
             <button
               className="text-gray-600 hover:text-red-500 hover:bg-gray-100 text-start p-2 cursor-pointer"
-              onClick={() => {}}
+              onClick={() => handleDelete && handleDelete()}
             >
               Delete
             </button>
