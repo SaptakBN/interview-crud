@@ -3,15 +3,15 @@ import {
   createPost,
   getApprovedPosts,
   approvePost,
-  getAllPosts,
+  getPendingPosts,
   editPost,
   deletePost,
 } from "../controllers/blog.controller";
 import { authMiddleware, adminMiddleware } from "../middleware/auth.middleware";
 const router = express.Router();
 
-router.get("/", authMiddleware, adminMiddleware, getAllPosts);
-router.get("/approved", authMiddleware, getApprovedPosts);
+router.get("/", authMiddleware, getApprovedPosts);
+router.get("/pending", authMiddleware, adminMiddleware, getPendingPosts);
 router.put("/:id", authMiddleware, editPost);
 router.delete("/:id", authMiddleware, deletePost);
 router.post("/create", authMiddleware, createPost);

@@ -13,12 +13,6 @@ export function HomeInputs({ refetch }: { refetch: () => void }) {
         >
           Create Blog
         </button>
-        <button
-          className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-400 w-full cursor-pointer"
-          onClick={() => setIsOpen(true)}
-        >
-          View pending blogs
-        </button>
       </div>
       <Modal isOpen={isOpen} close={() => setIsOpen(false)} title="Create Blog">
         <BlogForm refetch={refetch} close={() => setIsOpen(false)} />

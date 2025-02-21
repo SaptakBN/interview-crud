@@ -1,8 +1,8 @@
-import { logout, selectAuth, useAppDispatch, useAppSelector } from "@/redux";
+import { LoginResponse } from "@/interfaces/login.interface";
+import { logout, useAppDispatch } from "@/redux";
 import { storage } from "@/services";
 
-export const Header = () => {
-  const { session } = useAppSelector(selectAuth);
+export const Header = ({ session }: { session: LoginResponse }) => {
   const dispatch = useAppDispatch();
   const handleLogout = () => {
     dispatch(logout());

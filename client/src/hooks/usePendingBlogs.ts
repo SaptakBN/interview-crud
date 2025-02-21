@@ -1,15 +1,15 @@
 import { Blog } from "@/interfaces/blog.interface";
-import { getAllBlogs } from "@/services/blog.service";
+import { getPendingBlogs } from "@/services/blog.service";
 import { useCallback, useEffect, useState } from "react";
 
-const useAllBlogs = () => {
+const usePendingBlogs = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const fetchAllBlogs = useCallback(async () => {
+  const fetchPendingBlogs = useCallback(async () => {
     setLoading(true);
     try {
-      const [response, error] = await getAllBlogs();
+      const [response, error] = await getPendingBlogs();
 
       if (error) {
         console.error("Error fetching blogs:", error);
@@ -26,10 +26,10 @@ const useAllBlogs = () => {
     }
   }, []);
   useEffect(() => {
-    fetchAllBlogs();
-  }, [fetchAllBlogs]);
+    fetchPendingBlogs();
+  }, [fetchPendingBlogs]);
 
-  return { blogs, fetchAllBlogs, loading };
+  return { blogs, fetchPendingBlogs, loading };
 };
 
-export default useAllBlogs;
+export default usePendingBlogs;

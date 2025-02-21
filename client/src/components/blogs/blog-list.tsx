@@ -11,11 +11,15 @@ export function BlogList() {
     <main className="container mx-auto mt-6 px-4">
       <HomeInputs refetch={fetchApprovedBlogs} />
       {loading && <Loader />}
-      <div className="space-y-4">
-        {blogs.map((blog: IBlog, i: number) => (
-          <Blog blog={blog} key={i} />
-        ))}
-      </div>
+      {blogs.length ? (
+        <div className="space-y-4">
+          {blogs.map((blog: IBlog, i: number) => (
+            <Blog blog={blog} key={i} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center my-20 text-2xl">No approved blogs found</p>
+      )}
     </main>
   );
 }

@@ -76,9 +76,11 @@ export const getApprovedPosts = async (req: AuthRequest, res: Response, next: Ne
   }
 };
 
-export const getAllPosts = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+export const getPendingPosts = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const blogs = await Blog.find().populate({ path: "author", select: "-password" }).sort({ createdAt: -1 });
+    const blogs = await Blog.find({ status: "pending" })
+      .populate({ path: "author", select: "-password" })
+      .sort({ createdAt: -1 });
     res.json(blogs);
   } catch (error) {
     next(error);
