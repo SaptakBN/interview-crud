@@ -5,7 +5,7 @@ export interface Blog {
   createdAt: string;
   updatedAt: string;
   author: {
-    id: string;
+    _id: string;
     email: string;
   };
 }

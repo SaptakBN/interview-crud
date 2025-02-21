@@ -86,3 +86,16 @@ export const getPendingPosts = async (req: AuthRequest, res: Response, next: Nex
     next(error);
   }
 };
+
+export const getPost = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const blog = await Blog.findById(req.params.id).populate({ path: "author", select: "-password" });
+    if (!blog) {
+      res.status(404).json({ message: "Blog not found" });
+      return;
+    }
+    res.json(blog);
+  } catch (error) {
+    next(error);
+  }
+};

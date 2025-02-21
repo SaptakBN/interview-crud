@@ -7,5 +7,6 @@ const createBlog = (data: BlogArg) => POST<BlogArg, Blog[]>("/api/blog/create", 
 const editBlog = (id: string, data: BlogArg) => POST<BlogArg, { message: string }>("/api/blog/edit/" + id, data);
 const deleteBlog = (id: string) => DELETE<{ message: string }>("/api/blog/delete/" + id);
 const approveBlog = (id: string) => PATCH<null, { message: string }>("api/blog/admin/" + id, null);
+const getBlog = (id: string) => GET<never, Blog>("/api/blog/" + id);
 
-export { getPendingBlogs, getApprovedBlogs, createBlog, editBlog, deleteBlog, approveBlog };
+export { getPendingBlogs, getApprovedBlogs, createBlog, editBlog, deleteBlog, approveBlog, getBlog };

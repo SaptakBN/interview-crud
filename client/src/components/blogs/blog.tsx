@@ -2,7 +2,17 @@ import { format } from "@/utils/date-format";
 import { EditMenu } from "@/components";
 import { Blog as IBlog } from "@/interfaces/blog.interface";
 
-export function Blog({ blog, handleApprove }: { blog: IBlog; handleApprove?: (id: string) => void }) {
+export function Blog({
+  blog,
+  handleApprove,
+  handleEdit,
+  isSameUser,
+}: {
+  blog: IBlog;
+  handleApprove?: (id: string) => void;
+  handleEdit?: () => void;
+  isSameUser: boolean;
+}) {
   return (
     <div className="bg-white p-4 rounded shadow-md">
       <div className="flex justify-between items-center mb-2">
@@ -20,7 +30,7 @@ export function Blog({ blog, handleApprove }: { blog: IBlog; handleApprove?: (id
             Approve
           </button>
         ) : (
-          <EditMenu />
+          isSameUser && <EditMenu handleEdit={handleEdit} />
         )}
       </div>
       <h2 className="text-xl font-bold mb-4">{blog.title}</h2>

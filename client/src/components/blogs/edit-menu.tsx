@@ -2,11 +2,14 @@ import { Ellipsis } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-export const EditMenu = () => {
+export const EditMenu = ({ handleEdit }: { handleEdit?: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="flex relative">
-      <button className="text-gray-500 hover:bg-gray-100 p-2 rounded-full cursor-pointer" onClick={() => setIsMenuOpen((prev) => !prev)}>
+      <button
+        className="text-gray-500 hover:bg-gray-100 p-2 rounded-full cursor-pointer"
+        onClick={() => setIsMenuOpen((prev) => !prev)}
+      >
         <Ellipsis />
       </button>
       <AnimatePresence initial={false}>
@@ -31,10 +34,16 @@ export const EditMenu = () => {
             exit={{ opacity: 0, scale: 0, x: 0, y: -15 }}
             className="absolute bg-gray-50 rounded shadow-2xl flex flex-col z-10"
           >
-            <button className="text-gray-600 hover:text-blue-500 hover:bg-gray-100 text-start p-2 cursor-pointer" onClick={() => {}}>
+            <button
+              className="text-gray-600 hover:text-blue-500 hover:bg-gray-100 text-start p-2 cursor-pointer"
+              onClick={() => handleEdit && handleEdit()}
+            >
               Edit
             </button>
-            <button className="text-gray-600 hover:text-red-500 hover:bg-gray-100 text-start p-2 cursor-pointer" onClick={() => {}}>
+            <button
+              className="text-gray-600 hover:text-red-500 hover:bg-gray-100 text-start p-2 cursor-pointer"
+              onClick={() => {}}
+            >
               Delete
             </button>
           </motion.div>

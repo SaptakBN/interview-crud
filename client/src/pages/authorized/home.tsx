@@ -8,7 +8,7 @@ const Home = () => {
     return (
       <main className="bg-gray-100 font-roboto h-screen">
         <Header session={session} />
-        {session.user.role === "user" && <BlogList />}
+        {session.user.role === "user" && <BlogList userId={session.user.id} />}
         {session.user.role === "admin" && <PendingList />}
       </main>
     );

@@ -2,15 +2,26 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BlogFormData, blogValidator } from "@/validators/create-blog.validator";
 import { createBlog } from "@/services/blog.service";
+import useBlog from "@/hooks/useBlog";
+import { useEffect } from "react";
 
-export const BlogForm = ({ refetch, close }: { refetch: () => void; close: () => void }) => {
+export const BlogForm = ({ refetch, close, id }: { refetch: () => void; close: () => void; id?: string | null }) => {
+  const { blog } = useBlog(id);
   const {
     register: registerInput,
     handleSubmit,
+    reset,
     formState: { errors, touchedFields },
   } = useForm<BlogFormData>({
     resolver: zodResolver(blogValidator),
   });
+
+  useEffect(() => {
+    reset({
+      title: blog?.title || "",
+      content: blog?.content || "",
+    });
+  }, [blog, reset]);
 
   async function handleCreate(value: BlogFormData) {
     const response = await createBlog(value);
