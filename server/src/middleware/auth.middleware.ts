@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import User from "../models/user";
+import User, { IUser } from "../models/user";
 
 export interface AuthRequest extends Request {
-  user?: any; // Define a proper user type based on your schema
+  user?: Omit<IUser, "password" | "comparePassword">; // Define a proper user type based on your schema
 }
 
 export const authMiddleware = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
@@ -30,7 +30,7 @@ export const authMiddleware = async (req: AuthRequest, res: Response, next: Next
 
 export const adminMiddleware = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
-    if (req.user.role !== "admin") {
+    if (req.user?.role !== "admin") {
       res.status(403).json({ message: "Access denied" });
     }
     next();
