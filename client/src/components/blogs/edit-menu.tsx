@@ -5,7 +5,7 @@ import { useState } from "react";
 export const EditMenu = ({ handleEdit, handleDelete }: { handleEdit?: () => void; handleDelete?: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="flex relative">
+    <div className="flex">
       <button
         className="text-gray-500 hover:bg-gray-100 p-2 rounded-full cursor-pointer"
         onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -30,7 +30,7 @@ export const EditMenu = ({ handleEdit, handleDelete }: { handleEdit?: () => void
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, scale: 0, x: 0, y: -15 }}
-            animate={{ opacity: 1, scale: 1, x: 50, y: 0 }}
+            animate={{ opacity: 1, scale: 1, x: 0, y: 50 }}
             exit={{ opacity: 0, scale: 0, x: 0, y: -15 }}
             className="absolute bg-gray-50 rounded shadow-2xl flex flex-col z-10"
           >

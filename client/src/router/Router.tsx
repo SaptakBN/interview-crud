@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { Login, Home } from "@/pages";
+import { Login, Home, BlogDetails } from "@/pages";
 import { Loader } from "@/components";
 import { selectAuth, useAppSelector } from "@/redux";
 import { AuthorizedGuard, UnauthorizedGuard } from "@/router/guards";
@@ -31,6 +31,8 @@ export const Router = () => {
             </AuthorizedGuard>
           }
         />
+        <Route path="blog/:id" element={<BlogDetails />} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   );
