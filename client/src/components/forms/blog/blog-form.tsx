@@ -1,35 +1,27 @@
 import { useForm } from "react-hook-form";
-import { useMutation } from "@apollo/client";
-import { CreatePostDocument, CreatePostMutation, CreatePostMutationVariables } from "@/GraphQL/generated/graphql";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PostFormData, postValidator } from "@/validators/create-post.validator";
+import { BlogFormData, blogValidator } from "@/validators/create-blog.validator";
 
-export const PostForm = ({ refetch, close }: { refetch: () => void; close: () => void }) => {
-  const [create, { data, loading, error }] = useMutation<CreatePostMutation, CreatePostMutationVariables>(
-    CreatePostDocument
-  );
-
+export const BlogForm = ({ refetch, close }: { refetch: () => void; close: () => void }) => {
   const {
     register: registerInput,
     handleSubmit,
     formState: { errors, touchedFields },
-  } = useForm<PostFormData>({
-    resolver: zodResolver(postValidator),
+  } = useForm<BlogFormData>({
+    resolver: zodResolver(blogValidator),
   });
 
-  async function handleCreate(value: PostFormData) {
+  async function handleCreate(value: BlogFormData) {
     console.log(value);
-    const response = await create({
-      variables: {
-        postArg: value,
-      },
-    });
-    console.log({ response, data, loading, error });
-    if (response.data) {
-      console.log(response.data.createPost);
-      refetch();
-      close();
-    }
+    // const response = await create({
+    //   variables: {
+    //     blogArg: value,
+    //   },
+    // });
+    // if (response.data) {
+    refetch();
+    close();
+    // }
   }
 
   return (

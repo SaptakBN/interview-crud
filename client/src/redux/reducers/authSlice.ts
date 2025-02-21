@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { type RootState } from "@/redux";
-import { LoginResponse } from "@/GraphQL/generated/graphql";
 import { storage } from "@/services";
 import { SliceEnum } from "@/enums";
+import { LoginResponse } from "@/interfaces/login.interface";
 
 export interface authInterface {
   isAuthenticated: boolean;

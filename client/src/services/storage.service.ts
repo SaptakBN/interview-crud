@@ -1,7 +1,7 @@
 import { AES, enc } from "crypto-js";
-import { LoginResponse } from "@/GraphQL/generated/graphql";
 import { SliceEnum } from "@/enums";
 import { STORAGE_SECRET } from "@/config";
+import { LoginResponse } from "@/interfaces/login.interface";
 
 class storageService {
   constructor() {}

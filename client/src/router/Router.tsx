@@ -22,7 +22,7 @@ export const Router = () => {
           }
         />
         <Route
-          path="/home"
+          path="/blogs"
           element={
             <AuthorizedGuard isAuthenticated={isAuthenticated}>
               <Suspense fallback={<Loader />}>

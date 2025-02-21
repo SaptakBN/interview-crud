@@ -1,10 +1,10 @@
-import { Header, PostList } from "@/components";
+import { Header, BlogList } from "@/components";
 
 const Home = () => {
   return (
     <main className="bg-gray-100 font-roboto h-screen">
       <Header />
-      <PostList />
+      <BlogList />
     </main>
   );
 };

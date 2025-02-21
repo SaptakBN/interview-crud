@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import User, { IUser } from "../models/user";
 
 export interface AuthRequest extends Request {
-  user?: Omit<IUser, "password" | "comparePassword">; // Define a proper user type based on your schema
+  user?: Omit<IUser, "password" | "comparePassword">;
 }
 
 export const authMiddleware = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
