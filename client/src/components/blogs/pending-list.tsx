@@ -21,7 +21,7 @@ export function PendingList() {
       {loading && <Loader />}
       <div className="space-y-4">
         {blogs.map((blog: IBlog, i: number) => (
-          <Blog blog={blog} key={i} handleApprove={handleApprove} />
+          <Blog blog={blog} key={i} handleApprove={handleApprove} isSameUser={false} />
         ))}
       </div>
     </main>

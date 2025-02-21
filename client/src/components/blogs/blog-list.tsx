@@ -29,7 +29,7 @@ export function BlogList({ userId }: { userId: string }) {
       ) : (
         <p className="text-center my-20 text-2xl">No approved blogs found</p>
       )}
-      <Modal isOpen={isOpen} close={() => setIdToUpdate(null)} title="Create Blog">
+      <Modal isOpen={isOpen} close={() => setIdToUpdate(null)} title="Edit Blog">
         <BlogForm refetch={fetchApprovedBlogs} close={() => setIdToUpdate(null)} id={idToUpdate} />
       </Modal>
     </main>

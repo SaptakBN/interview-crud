@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BlogFormData, blogValidator } from "@/validators/create-blog.validator";
-import { createBlog } from "@/services/blog.service";
+import { createBlog, editBlog } from "@/services/blog.service";
 import useBlog from "@/hooks/useBlog";
 import { useEffect } from "react";
 
@@ -31,9 +31,19 @@ export const BlogForm = ({ refetch, close, id }: { refetch: () => void; close: (
     }
   }
 
+  async function handleUpdate(value: BlogFormData) {
+    const response = await editBlog(id!, value);
+    if (response) {
+      refetch();
+      close();
+    }
+  }
+
+  const submitFn = id ? handleUpdate : handleCreate;
+
   return (
     <div className="">
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleCreate)}>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit(submitFn)}>
         <input
           className="border-2 border-gray-300 rounded-md h-full px-4 py-2"
           type="text"
