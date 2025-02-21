@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BlogFormData, blogValidator } from "@/validators/create-blog.validator";
+import { createBlog } from "@/services/blog.service";
 
 export const BlogForm = ({ refetch, close }: { refetch: () => void; close: () => void }) => {
   const {
@@ -12,16 +13,11 @@ export const BlogForm = ({ refetch, close }: { refetch: () => void; close: () =>
   });
 
   async function handleCreate(value: BlogFormData) {
-    console.log(value);
-    // const response = await create({
-    //   variables: {
-    //     blogArg: value,
-    //   },
-    // });
-    // if (response.data) {
-    refetch();
-    close();
-    // }
+    const response = await createBlog(value);
+    if (response) {
+      refetch();
+      close();
+    }
   }
 
   return (
