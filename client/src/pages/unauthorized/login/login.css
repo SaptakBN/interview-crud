@@ -1,5 +1,5 @@
 .mainLogin {
-  width: 350px;
+  width: 400px;
   height: 500px;
   background: red;
   overflow: hidden;
@@ -21,13 +21,13 @@
   font-size: 2.3em;
   justify-content: center;
   display: flex;
-  margin: 50px;
+  margin: 50px auto 20px auto;
   font-weight: bold;
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
 .auth-input {
-  width: 60%;
+  width: 80%;
   height: 12px;
   background: #e0dede;
   justify-content: center;
@@ -40,7 +40,7 @@
   font-size: medium;
 }
 .auth-button {
-  width: 60%;
+  width: 80%;
   height: 40px;
   margin: 10px auto;
   justify-content: center;
@@ -89,5 +89,5 @@
   align-items: center;
   min-height: 100vh;
   font-family: "Jost", sans-serif;
-  background: linear-gradient(to bottom, #2f2f74, #5a52a5, #a89cff);
+  background: linear-gradient(to bottom, #8282bb, #a7a1db, #d7d2ff);
 }

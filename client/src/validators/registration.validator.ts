@@ -7,7 +7,7 @@ export const registrationValidator: RegisterArgValidator = z
     email: z.string().min(1, { message: "Email has to be filled." }).email("This is not a valid email."),
     password: z
       .string()
-      .min(6, "Password must be at least 6 characters long")
+      .min(6, "Password must be 6 characters long")
       .max(20, "Password must be less than 20 characters"),
     confirmPassword: z.string(),
   })

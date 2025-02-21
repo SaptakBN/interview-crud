@@ -25,10 +25,10 @@ export const RegistrationForm = () => {
           Sign up
         </label>
         <input className="auth-input" type="text" placeholder="Username" {...registerInput("email")} />
-        {errors.email && touchedFields.email && <p className="text-center text-red-400">{errors.email.message}</p>}
+        {errors.email && touchedFields.email && <p className="text-center text-red-500">{errors.email.message}</p>}
         <input className="auth-input" type="password" placeholder="Password" {...registerInput("password")} />
         {errors.password && touchedFields.password && (
-          <p className="text-center text-red-400">{errors.password.message}</p>
+          <p className="text-center text-red-500">{errors.password.message}</p>
         )}
         <input
           className="auth-input"
@@ -36,7 +36,9 @@ export const RegistrationForm = () => {
           placeholder="Confirm Password"
           {...registerInput("confirmPassword")}
         />
-        {errors.confirmPassword && touchedFields.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+        {errors.confirmPassword && touchedFields.confirmPassword && (
+          <p className="text-center text-red-500">{errors.confirmPassword.message}</p>
+        )}
         <button className="auth-button">Sign up</button>
       </form>
     </div>
