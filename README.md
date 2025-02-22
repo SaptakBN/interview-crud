@@ -1,8 +1,8 @@
-# Blog CRUD (Node.js, Express, MongoDB, React, TypeScript)
+# Blog CRUD (Node.js, Express, MongoDB, React and TypeScript)
 
 ## 📌 Overview
 
-This is a **RESTful Blog CRUD** built using **Node.js, Express, MongoDB, React and TypeScript**. It allows users to register, authenticate via JWT, create and manage blog posts, and includes an admin approval system before posts are published.
+This is a **Blog CRUD** built using **Node.js, Express, MongoDB, React and TypeScript**. It allows users to register, authenticate via JWT, create and manage blog posts, and includes an admin approval system before posts are published.
 
 ## 🚀 Features
 
