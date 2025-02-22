@@ -1,1 +1,68 @@
-# interview-crud
+# Blog CRUD (Node.js, Express, MongoDB, React, TypeScript)
+
+## 📌 Overview
+
+This is a **RESTful Blog CRUD** built using **Node.js, Express, MongoDB, React and TypeScript**. It allows users to register, authenticate via JWT, create and manage blog posts, and includes an admin approval system before posts are published.
+
+## 🚀 Features
+
+- **User Authentication** with JWT
+- **CRUD operations** for blog posts
+- **Admin Approval System** (only approved posts are listed)
+- **MongoDB Integration** with Mongoose
+- **TypeScript Support**
+- **Environment Variable Configuration**
+- **Complete Dockerization**
+
+## 🛠️ Installation
+
+### 1️⃣ Clone the repository
+
+```sh
+git clone https://github.com/SaptakBN/interview-crud.git
+cd interview-crud
+```
+
+### 2️⃣ Setting up dependency and launching docker containers
+
+```sh
+npm start
+```
+
+### 4️⃣ Server should be running at
+
+```sh
+http://localhost:5000
+```
+
+### 4️⃣ Client should be running at
+
+```sh
+http://localhost:3000
+```
+
+## 📌 API Endpoints
+
+### 🟢 User Authentication
+
+| Method | Endpoint        | Description                    |
+| ------ | --------------- | ------------------------------ |
+| POST   | `/api/register` | Register a new user            |
+| POST   | `/api/login`    | Authenticate user & return JWT |
+
+### 📝 Blog Post Management
+
+| Method | Endpoint        | Description                                      |
+| ------ | --------------- | ------------------------------------------------ |
+| GET    | `/api/blog`     | Get all **approved** blog posts (sorted by date) |
+| POST   | `/api/blog`     | Create a new blog post (default: pending)        |
+| GET    | `/api/blog/:id` | Get a single blog post by ID                     |
+| PUT    | `/api/blog/:id` | Update a blog post (author only)                 |
+| DELETE | `/api/blog/:id` | Delete a blog post (author only)                 |
+
+### 🔑 Admin Actions
+
+| Method | Endpoint            | Description                                                  |
+| ------ | ------------------- | ------------------------------------------------------------ |
+| GET    | `/api/blog/pending` | Get all **pending** blog posts (sorted by date) (admin only) |
+| PATCH  | `/api/admin/:id`    | Approve a blog post (admin only)                             |

@@ -13,10 +13,10 @@ const router = express.Router();
 
 router.get("/", authMiddleware, getApprovedPosts);
 router.get("/pending", authMiddleware, adminMiddleware, getPendingPosts);
+router.post("/", authMiddleware, createPost);
 router.get("/:id", authMiddleware, getPost);
 router.put("/:id", authMiddleware, editPost);
 router.delete("/:id", authMiddleware, deletePost);
-router.post("/create", authMiddleware, createPost);
 router.patch("/admin/:id", authMiddleware, adminMiddleware, approvePost);
 
 export default router;

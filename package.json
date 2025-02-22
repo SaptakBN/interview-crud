@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "deps": "cd server && pnpm i && cd ../client && pnpm i && cd ..",
+        "start": "npm run deps && sudo docker compose up -d --build",
+        "start:force": "npm run deps && sudo docker compose build --no-cache && sudo docker compose up -d --force-recreate",
+        "stop": "sudo docker compose down",
+        "logs": "sudo docker compose logs -f",
+        "restart": "npm run stop && npm run start"
+    }
+}
