@@ -41,9 +41,9 @@ http://localhost:5000
 http://localhost:3000
 ```
 
-### 🔑 Admin user already seeded to database
-
-> **Use this user to approve blog posts**
+### 🔑 Admin Credentials
+> Admin user already seeded to database.
+> Use this user to approve blog posts.
 
 ```sh
 email: admin@gmail.com
