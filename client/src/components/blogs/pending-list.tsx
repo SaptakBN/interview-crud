@@ -2,6 +2,7 @@ import { Loader, Blog } from "@/components";
 import usePendingBlogs from "@/hooks/usePendingBlogs";
 import { Blog as IBlog } from "@/interfaces/blog.interface";
 import { approveBlog } from "@/services/blog.service";
+import toast from "react-hot-toast";
 
 export function PendingList() {
   const { blogs, fetchPendingBlogs, loading } = usePendingBlogs();
@@ -9,7 +10,10 @@ export function PendingList() {
   const handleApprove = async (id: string) => {
     const [response, error] = await approveBlog(id);
     if (error) console.log(error);
-    if (response) await fetchPendingBlogs();
+    if (response) {
+      toast.success("Blog approved successfully");
+      await fetchPendingBlogs();
+    }
   };
 
   if (loading) return <Loader />;

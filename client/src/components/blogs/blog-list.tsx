@@ -3,6 +3,7 @@ import useApprovedBlogs from "@/hooks/useApprovedBlogs";
 import { Blog as IBlog } from "@/interfaces/blog.interface";
 import { deleteBlog } from "@/services/blog.service";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export function BlogList({ userId }: { userId: string }) {
   const { blogs, fetchApprovedBlogs, loading } = useApprovedBlogs();
@@ -13,7 +14,10 @@ export function BlogList({ userId }: { userId: string }) {
   const handleDelete = async (id: string) => {
     const [response, error] = await deleteBlog(id);
     if (error) console.log(error);
-    if (response) await fetchApprovedBlogs();
+    if (response) {
+      toast.success("Blog deleted successfully");
+      await fetchApprovedBlogs();
+    }
   };
 
   if (loading) return <Loader />;

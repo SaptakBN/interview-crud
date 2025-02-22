@@ -4,6 +4,7 @@ import { BlogFormData, blogValidator } from "@/validators/create-blog.validator"
 import { createBlog, editBlog } from "@/services/blog.service";
 import useBlog from "@/hooks/useBlog";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export const BlogForm = ({ refetch, close, id }: { refetch: () => void; close: () => void; id?: string | null }) => {
   const { blog } = useBlog(id);
@@ -28,6 +29,7 @@ export const BlogForm = ({ refetch, close, id }: { refetch: () => void; close: (
     if (response) {
       refetch();
       close();
+      toast.success("Blog created successfully");
     }
   }
 
@@ -36,6 +38,7 @@ export const BlogForm = ({ refetch, close, id }: { refetch: () => void; close: (
     if (response) {
       refetch();
       close();
+      toast.success("Blog updated successfully");
     }
   }
 

@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { RegistrationFormData, registrationValidator } from "@/validators";
 import { register } from "@/services/auth.service";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -18,7 +19,11 @@ export const RegistrationForm = () => {
     const { confirmPassword, ...rest } = value;
     if (confirmPassword !== rest.password) return;
 
-    await register(value);
+    const [response] = await register(value);
+    if (response) {
+      toast.success("Registration successful");
+      navigate("auth/login");
+    }
   };
   return (
     <>
