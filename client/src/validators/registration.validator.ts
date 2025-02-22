@@ -4,7 +4,7 @@ export type RegisterArgValidator = z.ZodType<RegisterArg & { confirmPassword: st
 
 export const registrationValidator: RegisterArgValidator = z
   .object({
-    email: z.string().min(1, { message: "Email has to be filled." }).email("This is not a valid email."),
+    email: z.string().nonempty("Email has to be filled.").email("This is not a valid email."),
     password: z
       .string()
       .min(6, "Password must be 6 characters long")
