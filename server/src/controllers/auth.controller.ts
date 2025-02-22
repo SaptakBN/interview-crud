@@ -8,7 +8,10 @@ dotenv.config();
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { email, password } = req.body;
-    if (await User.findOne({ email })) res.status(400).json({ message: "User already exists" });
+    if (await User.findOne({ email })) {
+      res.status(400).json({ message: "User already exists" });
+      return;
+    }
 
     await User.create({ email, password });
     res.status(201).json({ message: "User registered successfully" });
@@ -21,7 +24,10 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user || !(await user.comparePassword(password))) res.status(401).json({ message: "Invalid credentials" });
+    if (!user || !(await user.comparePassword(password))) {
+      res.status(401).json({ message: "Invalid credentials" });
+      return;
+    }
 
     if (user) {
       const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET as string, { expiresIn: "1d" });

@@ -2,7 +2,6 @@ import { Response, NextFunction } from "express";
 import Blog from "../models/blog";
 import { AuthRequest } from "../middleware/auth.middleware";
 
-// Create a new blog blog
 export const createPost = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { title, content } = req.body;
@@ -14,7 +13,6 @@ export const createPost = async (req: AuthRequest, res: Response, next: NextFunc
   }
 };
 
-// Approve a blog blog (admin only)
 export const approvePost = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   console.log("asdasd");
   try {
