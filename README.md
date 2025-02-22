@@ -29,7 +29,7 @@ cd interview-crud
 npm start
 ```
 
-### 4️⃣ Server should be running at
+### 3️⃣ Server should be running at
 
 ```sh
 http://localhost:5000
@@ -39,6 +39,15 @@ http://localhost:5000
 
 ```sh
 http://localhost:3000
+```
+
+### 🔑 Admin user already seeded to database
+
+> **Use this user to approve blog posts**
+
+```sh
+email: admin@gmail.com
+password: 123456
 ```
 
 ## 📌 API Endpoints
