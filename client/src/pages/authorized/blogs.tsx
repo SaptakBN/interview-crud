@@ -2,7 +2,7 @@ import { Header, BlogList } from "@/components";
 import { PendingList } from "@/components/blogs/pending-list";
 import { selectAuth, useAppSelector } from "@/redux";
 
-const Home = () => {
+const Blogs = () => {
   const { session } = useAppSelector(selectAuth);
   if (session)
     return (
@@ -14,4 +14,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Blogs;

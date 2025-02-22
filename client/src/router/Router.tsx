@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { Login, Home, BlogDetails } from "@/pages";
+import { Login, Blogs, BlogDetails } from "@/pages";
 import { Loader } from "@/components";
 import { selectAuth, useAppSelector } from "@/redux";
 import { AuthorizedGuard, UnauthorizedGuard } from "@/router/guards";
@@ -26,7 +26,7 @@ export const Router = () => {
           element={
             <AuthorizedGuard isAuthenticated={isAuthenticated}>
               <Suspense fallback={<Loader />}>
-                <Home />
+                <Blogs />
               </Suspense>
             </AuthorizedGuard>
           }
