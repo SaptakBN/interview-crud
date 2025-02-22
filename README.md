@@ -29,19 +29,26 @@ cd interview-crud
 npm start
 ```
 
-### 3️⃣ Server should be running at
+### 3️⃣ Server should be listning on
 
 ```sh
 http://localhost:5000
 ```
 
-### 4️⃣ Client should be running at
+### 4️⃣ Client should be listning on
 
 ```sh
 http://localhost:3000
 ```
 
+### 5️⃣ Database should be listning on
+
+```sh
+mongodb://localhost:27018/blogDB
+```
+
 ### 🔑 Admin Credentials
+
 > Admin user already seeded to database.
 > Use this user to approve blog posts.
 
