@@ -6,7 +6,7 @@ import { selectAuth, useAppSelector } from "@/redux";
 import { AuthorizedGuard, UnauthorizedGuard } from "@/router/guards";
 
 export const Router = () => {
-  const { isAuthenticated } = useAppSelector(selectAuth);
+  const { isAuthenticated, session } = useAppSelector(selectAuth);
   const router = (
     <BrowserRouter>
       <Routes>
@@ -30,17 +30,18 @@ export const Router = () => {
             }
           />
         </Route>
-        <Route
-          path="/blogs"
-          element={
-            <AuthorizedGuard isAuthenticated={isAuthenticated}>
+        <Route path="/main" element={<AuthorizedGuard isAuthenticated={isAuthenticated} session={session} />}>
+          <Route index element={<Navigate replace to="blogs" />} />
+          <Route
+            path="blogs"
+            element={
               <Suspense fallback={<Loader />}>
-                <Blogs />
+                <Blogs session={session} />
               </Suspense>
-            </AuthorizedGuard>
-          }
-        />
-        <Route path="blog/:id" element={<BlogDetails />} />
+            }
+          />
+          <Route path="blog/:id" element={<BlogDetails />} />
+        </Route>
         <Route path="*" element={<Navigate to="/auth" />} />
       </Routes>
     </BrowserRouter>

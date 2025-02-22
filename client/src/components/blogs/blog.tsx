@@ -38,7 +38,7 @@ export function Blog({
       </div>
       <h2 className="text-xl font-bold mb-4">{blog.title}</h2>
       <p className="text-gray-700 mb-4">{blog.content}</p>
-      <Link to={`/blog/${blog._id}`}> View details</Link>
+      <Link to={`/main/blog/${blog._id}`}> View details</Link>
     </div>
   );
 }
