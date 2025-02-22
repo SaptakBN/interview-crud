@@ -16,6 +16,12 @@ This is a **Blog CRUD** built using **Node.js, Express, MongoDB, React and TypeS
 
 ## 🛠️ Installation
 
+### ⚠️ Make sure you have pnpm installed, if not
+
+```sh
+npm install -g pnpm
+```
+
 ### 1️⃣ Clone the repository
 
 ```sh
@@ -82,3 +88,29 @@ password: 123456
 | ------ | ------------------- | ------------------------------------------------------------ |
 | GET    | `/api/blog/pending` | Get all **pending** blog posts (sorted by date) (admin only) |
 | PATCH  | `/api/admin/:id`    | Approve a blog post (admin only)                             |
+
+### ℹ️ Other Commands
+
+> Start without cache
+
+```sh
+npm run start:force
+```
+
+> View logs
+
+```sh
+npm run logs
+```
+
+> Restart containers
+
+```sh
+npm run restart
+```
+
+> Exit containers
+
+```sh
+npm run stop
+```
